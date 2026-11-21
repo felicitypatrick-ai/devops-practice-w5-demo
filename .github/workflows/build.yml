@@ -24,3 +24,7 @@ jobs:
         with:
           name: parking-app
           path: dist/
+      - name: Check the weekday rates
+        run: python scripts/rate_check.py weekday
+      - name: Check the weekend rates
+        run: python scripts/rate_check.py weekend
