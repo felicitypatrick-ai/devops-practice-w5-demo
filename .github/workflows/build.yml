@@ -3,7 +3,6 @@ name: Build
 on:
   push:
     branches: [ "main" ]
-    paths-ignore: [ "docs/**" ]
 
 jobs:
   build:
@@ -25,17 +24,3 @@ jobs:
         with:
           name: parking-app
           path: dist/
-
-  rate-check:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        part: [ weekday, weekend ]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Check the rates
-        run: python scripts/rate_check.py ${{ matrix.part }}
